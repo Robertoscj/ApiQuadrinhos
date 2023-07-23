@@ -13,10 +13,7 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        // aplica as configurações de mapeamento das entidades
-        // do banco de dados contidas em uma determinada assembly
-        // (conjunto de classes) ao objeto ModelBuilder durante a
-        // criação do modelo.
+     
         builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
 
         builder.Entity<Categoria>().HasKey(t => t.Id);
@@ -28,7 +25,7 @@ public class AppDbContext : DbContext
             .WithOne(b => b.Categoria)
             .HasForeignKey(b => b.CategoriaId);
 
-        //define os dados iniciais para a entidade Categoria
+        
         builder.Entity<Categoria>().HasData(
           new Categoria(1, "Aventura"),
           new Categoria(2, "Ação"),
@@ -51,10 +48,7 @@ public class AppDbContext : DbContext
 
         builder.Entity<Quadrinho>().Property(p => p.Preco).HasPrecision(10, 2);
 
-        // Define o comportamento de exclusão de todas as chaves estrangeiras
-        // no modelo de dados como ClientSetNull, para que a exclusão de uma
-        // entidade relacionada resulte na definição dos valores das chaves
-        // estrangeiras como null nas entidades referenciadas.
+        
         foreach (var relationship in builder.Model.GetEntityTypes()
                 .SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
