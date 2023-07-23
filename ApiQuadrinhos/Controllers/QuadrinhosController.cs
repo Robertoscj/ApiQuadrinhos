@@ -21,10 +21,7 @@ namespace ApiQuadrinhos.Controllers
         }
 
         [HttpGet]
-        // Atributos de ação que fornecem informações sobre os possíveis códigos de status HTTP
-        // que podem ser retornados pelo endpoint da Web API.
-        // Esses atributos indicam os códigos de status de resposta esperados para esse endpoint
-        // específico e ajudam a documentar e definir a semântica da API
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
