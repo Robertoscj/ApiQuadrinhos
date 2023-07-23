@@ -11,9 +11,9 @@ public class DomainToDTOProfile : Profile
         CreateMap<Categoria, CategoriaDTO>().ReverseMap();
         CreateMap<Quadrinho, QuadrinhosDTO>().ReverseMap();
 
-        // cria um mapeamento entre a classe Manga e a classe MangaCategoriaDTO.
+        // cria um mapeamento entre a classeQuadrinho e a classe QuadrinhoCategoriaDTO.
         // O mapeamento especifica que a propriedade NomeCategoria do DTO será
-        // mapeada a partir da propriedade Nome da propriedade Categoria do objeto Manga.
+        // mapeada a partir da propriedade Nome da propriedade Categoria do objeto Quadrinho.
         CreateMap<Quadrinho, QuadrinhosCategoriaDTO>()
             .ForMember(dto => dto.NomeCategoria, opt=> opt.MapFrom(src=> src.Categoria.Nome));
     }
